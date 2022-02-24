@@ -8,13 +8,18 @@
 import SwiftUI
 
 struct CardView: View {
+
+    // MARK: - variables
+
     @State private var translation: CGSize = .zero
+
 
     private var player: SinglePlayer
     private var onRemove: (_ player: SinglePlayer) -> Void
 
     private var thresholdPercentage: CGFloat = 0.5 // when the user has draged 50% the width of the screen in either direction
 
+    // MARK: - init
 
     init(player: SinglePlayer, onRemove: @escaping (_ player: SinglePlayer) -> Void) {
         self.player = player
@@ -31,22 +36,19 @@ struct CardView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            VStack(alignment: .leading) {
-                ZStack(alignment: .center) {
-                    Color.white
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: geometry.size.width, height: geometry.size.height)
-                        .clipped()
-                    Text("Клацни чтобы узнать кто ты")
-                        .font(.largeTitle)
-                }
+            HStack(alignment: .center) {
+                Flashcard(size: geometry.size) {
+                        Text("Клацни чтобы узнать кто ты")
+                            .font(.largeTitle)
+                            .foregroundColor(BaseColors.sh.getColorByType(.baseLight))
+                    } back: {
+                        Text("Перевертыш")
+                            .font(.largeTitle)
+                            .foregroundColor(BaseColors.sh.getColorByType(.baseLight))
+                    }
             }
-            .padding(.bottom)
-            .cornerRadius(10)
-            .shadow(radius: 5)
-            .offset(x: self.translation.width, y: 0)
-            .rotationEffect(.degrees(Double(self.translation.width / geometry.size.width) * 40),
-                            anchor: .bottom)
+            .offset(x: translation.width, y: 0)
+            .rotationEffect(.degrees(Double(translation.width / geometry.size.width) * 40),anchor: .bottom)
             .gesture(
                 DragGesture()
                     .onChanged { value in

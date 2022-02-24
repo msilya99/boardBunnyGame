@@ -21,6 +21,8 @@
 		B27750B427C6D28D007BFCA3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27750B327C6D28D007BFCA3 /* CardView.swift */; };
 		B27750B627C6D2D0007BFCA3 /* CardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27750B527C6D2D0007BFCA3 /* CardContentView.swift */; };
 		B27750B827C6D8F5007BFCA3 /* TopPurpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27750B727C6D8F5007BFCA3 /* TopPurpleView.swift */; };
+		B28455F027C8387200C7B90D /* ANimatableModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28455EF27C8387200C7B90D /* ANimatableModifier.swift */; };
+		B28455F227C83DCE00C7B90D /* FlashCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28455F127C83DCE00C7B90D /* FlashCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		B27750B327C6D28D007BFCA3 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		B27750B527C6D2D0007BFCA3 /* CardContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContentView.swift; sourceTree = "<group>"; };
 		B27750B727C6D8F5007BFCA3 /* TopPurpleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPurpleView.swift; sourceTree = "<group>"; };
+		B28455EF27C8387200C7B90D /* ANimatableModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANimatableModifier.swift; sourceTree = "<group>"; };
+		B28455F127C83DCE00C7B90D /* FlashCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				B260A3A927C59A080065CE08 /* GameModel.swift */,
+				B28455EF27C8387200C7B90D /* ANimatableModifier.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -157,6 +162,7 @@
 			children = (
 				B27750B327C6D28D007BFCA3 /* CardView.swift */,
 				B27750B527C6D2D0007BFCA3 /* CardContentView.swift */,
+				B28455F127C83DCE00C7B90D /* FlashCardView.swift */,
 			);
 			path = "Game views";
 			sourceTree = "<group>";
@@ -238,7 +244,9 @@
 				B260A3A627C5987F0065CE08 /* ViewThemeColorModifier.swift in Sources */,
 				B260A3AA27C59A080065CE08 /* GameModel.swift in Sources */,
 				B260A39B27C594DC0065CE08 /* MenuFormView.swift in Sources */,
+				B28455F027C8387200C7B90D /* ANimatableModifier.swift in Sources */,
 				B260A39427C591CD0065CE08 /* MenuView.swift in Sources */,
+				B28455F227C83DCE00C7B90D /* FlashCardView.swift in Sources */,
 				B260A38627C587420065CE08 /* BoardBunnyGameApp.swift in Sources */,
 				B27750B627C6D2D0007BFCA3 /* CardContentView.swift in Sources */,
 				B27750B427C6D28D007BFCA3 /* CardView.swift in Sources */,
