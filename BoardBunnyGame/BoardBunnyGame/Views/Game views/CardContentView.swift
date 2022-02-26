@@ -46,7 +46,7 @@ struct CardContentView: View {
             GeometryReader { geometry in
                 TopPurpleView(size: geometry.size)
                 VStack(spacing: 24) {
-                    DateView()
+                    DateView(text: gameModel.topic)
                     if self.players.isEmpty {
                         Spacer()
                         Text("Начать заново")
@@ -77,13 +77,15 @@ struct CardContentView: View {
 }
 
 struct DateView: View {
+    @State var text: String
+    
     var body: some View {
         VStack {
             HStack {
                 VStack(alignment: .leading) {
-                    Text("Случайная тема")
+                    Text(text)
+                        .foregroundColor(BaseColors.sh.getColorByType(.baseLight))
                         .font(.title)
-                        .bold()
                 }
                 Spacer()
             }.padding()
