@@ -22,10 +22,15 @@ struct MenuView: View {
             GeometryReader { geometry in
                 TopPurpleView(size: geometry.size)
                 VStack {
-                    Spacer()
+                    DateView(text: "Настройки игры")
+                        .padding()
+                    Image("bunny")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxHeight: geometry.size.height / 4)
                     MenuFormView(selectedTopic: $gameModel.topic,
-                                 numbersOfPlayers: $gameModel.numbersOfPlayers)
-                        .frame(width: geometry.size.width, height: 150)
+                                 numbersOfPlayers: $gameModel.numberOfPlayers)
+                        .frame(minWidth: geometry.size.width)
                     Spacer()
                     PrimaryButton(title: "Начать игру") {
                         isActive = true
@@ -35,7 +40,7 @@ struct MenuView: View {
                                    isActive: $isActive) { }
                 }
             }
-        }.navigationTitle("Configure the game")
+            }.navigationBarHidden(true)
         }
         .accentColor(.black)
         .environmentObject(gameModel)

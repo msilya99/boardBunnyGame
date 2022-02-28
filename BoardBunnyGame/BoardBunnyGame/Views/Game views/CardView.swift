@@ -38,11 +38,11 @@ struct CardView: View {
         GeometryReader { geometry in
             HStack(alignment: .center) {
                 Flashcard(size: geometry.size) {
-                        Text("Клацни чтобы узнать кто ты")
+                    Text("Игрок номер \(player.id + 1)")
                             .font(.largeTitle)
                             .foregroundColor(BaseColors.sh.getColorByType(.baseLight))
                     } back: {
-                        Text("Перевертыш")
+                        Text("\(player.word)")
                             .font(.largeTitle)
                             .foregroundColor(BaseColors.sh.getColorByType(.baseLight))
                     }
@@ -52,15 +52,15 @@ struct CardView: View {
             .gesture(
                 DragGesture()
                     .onChanged { value in
-                        self.translation = value.translation
+                        translation = value.translation
                     }
                     .onEnded { value in
                     // determine snap distance > 0.5 aka half the width of the screen
                         withAnimation(.linear) {
-                            if abs(self.getGesturePercentage(geometry, from: value)) > self.thresholdPercentage {
-                                self.onRemove(self.player)
+                            if abs(getGesturePercentage(geometry, from: value)) > thresholdPercentage {
+                                onRemove(player)
                             } else {
-                                self.translation = .zero
+                                translation = .zero
                             }
                         }
                     }

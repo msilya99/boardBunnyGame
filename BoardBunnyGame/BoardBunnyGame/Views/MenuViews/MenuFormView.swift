@@ -33,7 +33,6 @@ struct MenuFormView: View {
         .padding()
     }
 
-    // TODO: - make it on context menu
     @ViewBuilder
     func getPickerView() -> some View {
         let view = Picker("Тема:", selection: $selectedTopic) {

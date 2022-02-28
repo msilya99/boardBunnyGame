@@ -13,19 +13,21 @@ struct SinglePlayer: Hashable {
 }
 
 class GameModel: ObservableObject {
+
     @Published var topic: String = "Случайная"
-    @Published var numbersOfPlayers: Int = 4
+    @Published var numberOfPlayers: Int = 4
+    @Published var players: [SinglePlayer] = []
 
     // MARK: - actions
 
     // TODO: - refactor this
-    func getPlayers() -> [SinglePlayer] {
+    private func getPlayers() -> [SinglePlayer] {
         var players: [SinglePlayer] = []
-        var words = Array(repeating: getWordForTopic(), count: numbersOfPlayers - 1)
+        var words = Array(repeating: getWordForTopic(), count: numberOfPlayers - 1)
         words.append("Ты заяц!")
         words.shuffle()
 
-        for id in 0..<numbersOfPlayers {
+        for id in 0..<numberOfPlayers {
             players.append(SinglePlayer(id: id, word: words[id]))
         }
         return players
@@ -33,5 +35,9 @@ class GameModel: ObservableObject {
 
     private func getWordForTopic() -> String {
         return "Рандомное слово"
+    }
+
+    func startGame() {
+        self.players = getPlayers()
     }
 }
