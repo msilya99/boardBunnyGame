@@ -9,8 +9,7 @@ import SwiftUI
 
 struct MenuFormView: View {
 
-    private let topics = ["Случайная", "Архитектура", "Музыка", "Кино и сериалы"]
-    @Binding var selectedTopic: String
+    @Binding var selectedTopic: WordCategory
     @Binding var numbersOfPlayers: Int
 
     @Environment(\.colorScheme) var colorScheme
@@ -36,8 +35,8 @@ struct MenuFormView: View {
     @ViewBuilder
     func getPickerView() -> some View {
         let view = Picker("Тема:", selection: $selectedTopic) {
-            ForEach(topics, id: \.self) {
-                Text($0)
+            ForEach(WordCategory.allCases, id: \.self) {
+                Text($0.getTopicTitle())
             }
         }
 

@@ -24,6 +24,7 @@
 		B27750B827C6D8F5007BFCA3 /* TopPurpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27750B727C6D8F5007BFCA3 /* TopPurpleView.swift */; };
 		B28455F027C8387200C7B90D /* AnimatableModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28455EF27C8387200C7B90D /* AnimatableModifier.swift */; };
 		B28455F227C83DCE00C7B90D /* FlashCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28455F127C83DCE00C7B90D /* FlashCardView.swift */; };
+		B28BD13127CEC679005937D9 /* ListOfWordsByCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28BD13027CEC679005937D9 /* ListOfWordsByCategories.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		B27750B727C6D8F5007BFCA3 /* TopPurpleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPurpleView.swift; sourceTree = "<group>"; };
 		B28455EF27C8387200C7B90D /* AnimatableModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableModifier.swift; sourceTree = "<group>"; };
 		B28455F127C83DCE00C7B90D /* FlashCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardView.swift; sourceTree = "<group>"; };
+		B28BD13027CEC679005937D9 /* ListOfWordsByCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfWordsByCategories.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		B260A38427C587420065CE08 /* BoardBunnyGame */ = {
 			isa = PBXGroup;
 			children = (
+				B28BD12F27CEC64F005937D9 /* Model */,
 				B260A3AB27C59AEF0065CE08 /* ViewModel */,
 				B260A3A427C598680065CE08 /* ViewModifiers */,
 				B260A39F27C597CF0065CE08 /* Extensions */,
@@ -170,6 +173,14 @@
 			path = "Game views";
 			sourceTree = "<group>";
 		};
+		B28BD12F27CEC64F005937D9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B28BD13027CEC679005937D9 /* ListOfWordsByCategories.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -249,6 +260,7 @@
 				B272010A27CD79D20042EC6E /* View + Ex.swift in Sources */,
 				B260A39B27C594DC0065CE08 /* MenuFormView.swift in Sources */,
 				B28455F027C8387200C7B90D /* AnimatableModifier.swift in Sources */,
+				B28BD13127CEC679005937D9 /* ListOfWordsByCategories.swift in Sources */,
 				B260A39427C591CD0065CE08 /* MenuView.swift in Sources */,
 				B28455F227C83DCE00C7B90D /* FlashCardView.swift in Sources */,
 				B260A38627C587420065CE08 /* BoardBunnyGameApp.swift in Sources */,

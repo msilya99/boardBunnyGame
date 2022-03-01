@@ -20,7 +20,7 @@ struct CardContentView: View {
             GeometryReader { geometry in
                 TopPurpleView(size: geometry.size)
                 VStack(spacing: 24) {
-                    DateView(text: gameModel.topic)
+                    DateView(text: gameModel.topic.getTopicTitle())
                     if gameModel.players.isEmpty {
                         Spacer()
                         Text("Начать игру")

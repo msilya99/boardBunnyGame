@@ -14,7 +14,7 @@ struct SinglePlayer: Hashable {
 
 class GameModel: ObservableObject {
 
-    @Published var topic: String = "Случайная"
+    @Published var topic: WordCategory = .animals
     @Published var numberOfPlayers: Int = 4
     @Published var players: [SinglePlayer] = []
 
@@ -34,7 +34,8 @@ class GameModel: ObservableObject {
     }
 
     private func getWordForTopic() -> String {
-        return "Рандомное слово"
+        guard let word = self.topic.getWordsByTopic().randomElement() else { return "" }
+        return word
     }
 
     func startGame() {
