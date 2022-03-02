@@ -14,7 +14,7 @@ struct SinglePlayer: Hashable {
 
 class GameModel: ObservableObject {
 
-    @Published var topic: WordCategory = .animals
+    @Published var topic: WordCategory = .random
     @Published var numberOfPlayers: Int = 4
     @Published var players: [SinglePlayer] = []
 
