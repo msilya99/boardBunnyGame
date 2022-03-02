@@ -41,4 +41,8 @@ class GameModel: ObservableObject {
     func startGame() {
         self.players = getPlayers()
     }
+
+    func stopGame() {
+        self.players = []
+    }
 }

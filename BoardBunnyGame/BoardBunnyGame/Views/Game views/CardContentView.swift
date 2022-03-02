@@ -21,6 +21,7 @@ struct CardContentView: View {
                 TopPurpleView(size: geometry.size)
                 VStack(spacing: 24) {
                     DateView(text: gameModel.topic.getTopicTitle())
+
                     if gameModel.players.isEmpty {
                         Spacer()
                         Text("Начать игру")
@@ -47,6 +48,16 @@ struct CardContentView: View {
                         }
                     }
                     Spacer()
+                }
+            }
+            .onDisappear(perform: {
+                self.gameModel.stopGame()
+            })
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Restart") {
+                        self.gameModel.startGame()
+                    }.hidden(self.gameModel.players.isEmpty)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
