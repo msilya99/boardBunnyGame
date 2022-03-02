@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct Flashcard<Front, Back>: View where Front: View, Back: View {
+
+    // MARK: - variables
+    
     var front: () -> Front
     var back: () -> Back
 
@@ -17,11 +20,15 @@ struct Flashcard<Front, Back>: View where Front: View, Back: View {
     @State var flashcardRotation = 0.0
     @State var contentRotation = 0.0
 
+    // MARK: - initialization
+
     init(size: CGSize, @ViewBuilder front: @escaping () -> Front, @ViewBuilder back: @escaping () -> Back) {
         self.size = size
         self.front = front
         self.back = back
     }
+
+    // MARK: - gui variables
 
     var body: some View {
         ZStack() {

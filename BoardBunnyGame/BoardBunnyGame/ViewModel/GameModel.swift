@@ -14,13 +14,22 @@ struct SinglePlayer: Hashable {
 
 class GameModel: ObservableObject {
 
+    // MARK: - variables
+
     @Published var topic: WordCategory = .random
     @Published var numberOfPlayers: Int = 4
     @Published var players: [SinglePlayer] = []
 
     // MARK: - actions
 
-    // TODO: - refactor this
+    func startGame() {
+        self.players = getPlayers()
+    }
+
+    func stopGame() {
+        self.players = []
+    }
+
     private func getPlayers() -> [SinglePlayer] {
         var players: [SinglePlayer] = []
         var words = Array(repeating: getWordForTopic(), count: numberOfPlayers - 1)
@@ -34,15 +43,6 @@ class GameModel: ObservableObject {
     }
 
     private func getWordForTopic() -> String {
-        guard let word = self.topic.getWordsByTopic().randomElement() else { return "" }
-        return word
-    }
-
-    func startGame() {
-        self.players = getPlayers()
-    }
-
-    func stopGame() {
-        self.players = []
+        return self.topic.getWordsByTopic().randomElement() ?? ""
     }
 }

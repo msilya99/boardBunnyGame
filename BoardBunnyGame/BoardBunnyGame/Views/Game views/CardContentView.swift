@@ -13,7 +13,7 @@ struct CardContentView: View {
 
     @ObservedObject var gameModel: GameModel
 
-    // MARK: - initialization
+    // MARK: - gui
 
     var body: some View {
         VStack {
@@ -21,7 +21,6 @@ struct CardContentView: View {
                 TopPurpleView(size: geometry.size)
                 VStack(spacing: 24) {
                     DateView(text: gameModel.topic.getTopicTitle())
-
                     if gameModel.players.isEmpty {
                         Spacer()
                         Text("Начать игру")
@@ -50,9 +49,9 @@ struct CardContentView: View {
                     Spacer()
                 }
             }
-            .onDisappear(perform: {
+            .onDisappear{
                 self.gameModel.stopGame()
-            })
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Restart") {
@@ -62,25 +61,5 @@ struct CardContentView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
         }.padding()
-    }
-}
-
-struct DateView: View {
-    @State var text: String
-    
-    var body: some View {
-        VStack {
-            HStack {
-                VStack(alignment: .leading) {
-                    Text(text)
-                        .foregroundColor(BaseColors.sh.getColorByType(.baseLight))
-                        .font(.title)
-                }
-                Spacer()
-            }.padding()
-        }
-        .background(Color.white)
-        .cornerRadius(10)
-        .shadow(radius: 5)
     }
 }

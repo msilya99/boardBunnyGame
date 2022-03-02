@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B260A38627C587420065CE08 /* BoardBunnyGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260A38527C587420065CE08 /* BoardBunnyGameApp.swift */; };
 		B260A38A27C587420065CE08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B260A38927C587420065CE08 /* Assets.xcassets */; };
-		B260A38D27C587420065CE08 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B260A38C27C587420065CE08 /* Preview Assets.xcassets */; };
 		B260A39427C591CD0065CE08 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260A39327C591CD0065CE08 /* MenuView.swift */; };
 		B260A39827C594970065CE08 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260A39727C594970065CE08 /* PrimaryButton.swift */; };
 		B260A39B27C594DC0065CE08 /* MenuFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260A39A27C594DC0065CE08 /* MenuFormView.swift */; };
@@ -22,16 +21,15 @@
 		B27750B427C6D28D007BFCA3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27750B327C6D28D007BFCA3 /* CardView.swift */; };
 		B27750B627C6D2D0007BFCA3 /* CardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27750B527C6D2D0007BFCA3 /* CardContentView.swift */; };
 		B27750B827C6D8F5007BFCA3 /* TopPurpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27750B727C6D8F5007BFCA3 /* TopPurpleView.swift */; };
-		B28455F027C8387200C7B90D /* AnimatableModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28455EF27C8387200C7B90D /* AnimatableModifier.swift */; };
 		B28455F227C83DCE00C7B90D /* FlashCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28455F127C83DCE00C7B90D /* FlashCardView.swift */; };
 		B28BD13127CEC679005937D9 /* ListOfWordsByCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28BD13027CEC679005937D9 /* ListOfWordsByCategories.swift */; };
+		B298B59827CF9BB0005777D8 /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B298B59727CF9BB0005777D8 /* DateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B260A38227C587420065CE08 /* BoardBunnyGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoardBunnyGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B260A38527C587420065CE08 /* BoardBunnyGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardBunnyGameApp.swift; sourceTree = "<group>"; };
 		B260A38927C587420065CE08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B260A38C27C587420065CE08 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B260A39327C591CD0065CE08 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		B260A39727C594970065CE08 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		B260A39A27C594DC0065CE08 /* MenuFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFormView.swift; sourceTree = "<group>"; };
@@ -44,9 +42,9 @@
 		B27750B327C6D28D007BFCA3 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		B27750B527C6D2D0007BFCA3 /* CardContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContentView.swift; sourceTree = "<group>"; };
 		B27750B727C6D8F5007BFCA3 /* TopPurpleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPurpleView.swift; sourceTree = "<group>"; };
-		B28455EF27C8387200C7B90D /* AnimatableModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableModifier.swift; sourceTree = "<group>"; };
 		B28455F127C83DCE00C7B90D /* FlashCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardView.swift; sourceTree = "<group>"; };
 		B28BD13027CEC679005937D9 /* ListOfWordsByCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfWordsByCategories.swift; sourceTree = "<group>"; };
+		B298B59727CF9BB0005777D8 /* DateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,17 +85,8 @@
 				B260A39527C5947F0065CE08 /* Views */,
 				B260A38527C587420065CE08 /* BoardBunnyGameApp.swift */,
 				B260A38927C587420065CE08 /* Assets.xcassets */,
-				B260A38B27C587420065CE08 /* Preview Content */,
 			);
 			path = BoardBunnyGame;
-			sourceTree = "<group>";
-		};
-		B260A38B27C587420065CE08 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				B260A38C27C587420065CE08 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		B260A39527C5947F0065CE08 /* Views */ = {
@@ -158,7 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				B260A3A927C59A080065CE08 /* GameModel.swift */,
-				B28455EF27C8387200C7B90D /* AnimatableModifier.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -169,6 +157,7 @@
 				B27750B327C6D28D007BFCA3 /* CardView.swift */,
 				B27750B527C6D2D0007BFCA3 /* CardContentView.swift */,
 				B28455F127C83DCE00C7B90D /* FlashCardView.swift */,
+				B298B59727CF9BB0005777D8 /* DateView.swift */,
 			);
 			path = "Game views";
 			sourceTree = "<group>";
@@ -239,7 +228,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B260A38D27C587420065CE08 /* Preview Assets.xcassets in Resources */,
 				B260A38A27C587420065CE08 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,13 +241,13 @@
 			files = (
 				B260A3A127C597DC0065CE08 /* Color + EX.swift in Sources */,
 				B260A39E27C5979E0065CE08 /* ThemeColors.swift in Sources */,
+				B298B59827CF9BB0005777D8 /* DateView.swift in Sources */,
 				B27750B827C6D8F5007BFCA3 /* TopPurpleView.swift in Sources */,
 				B260A39827C594970065CE08 /* PrimaryButton.swift in Sources */,
 				B260A3A627C5987F0065CE08 /* ViewThemeColorModifier.swift in Sources */,
 				B260A3AA27C59A080065CE08 /* GameModel.swift in Sources */,
 				B272010A27CD79D20042EC6E /* View + Ex.swift in Sources */,
 				B260A39B27C594DC0065CE08 /* MenuFormView.swift in Sources */,
-				B28455F027C8387200C7B90D /* AnimatableModifier.swift in Sources */,
 				B28BD13127CEC679005937D9 /* ListOfWordsByCategories.swift in Sources */,
 				B260A39427C591CD0065CE08 /* MenuView.swift in Sources */,
 				B28455F227C83DCE00C7B90D /* FlashCardView.swift in Sources */,

@@ -9,10 +9,15 @@ import SwiftUI
 
 struct MenuFormView: View {
 
+    // MARK: - variables
+
     @Binding var selectedTopic: WordCategory
     @Binding var numbersOfPlayers: Int
 
     @Environment(\.colorScheme) var colorScheme
+
+
+    // MARK: - gui
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {

@@ -15,7 +15,7 @@ struct PrimaryButton: View {
     var action: () -> Void
     var horizontalPadding: CGFloat = 32
 
-    // MARk: - views
+    // MARK: - views
 
     var body: some View {
         Button {

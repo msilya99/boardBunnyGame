@@ -14,7 +14,7 @@ struct MenuView: View {
     @StateObject private var gameModel: GameModel = GameModel()
     @State private var isActive: Bool = false
 
-    // MARK: - views
+    // MARK: - gui
 
     var body: some View {
         NavigationView {
