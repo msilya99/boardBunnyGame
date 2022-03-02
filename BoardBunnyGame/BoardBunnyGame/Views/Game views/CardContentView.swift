@@ -20,12 +20,12 @@ struct CardContentView: View {
             GeometryReader { geometry in
                 TopPurpleView(size: geometry.size)
                 VStack(spacing: 24) {
-                    DateView(text: gameModel.topic.getTopicTitle())
+                    DateView(text: $gameModel.selectedTopicTitle)
                     if gameModel.players.isEmpty {
                         Spacer()
                         Text("Начать игру")
                             .onTapGesture(perform: {
-                                gameModel.startGame()
+                                gameModel.startGame(isRestarting: false)
                             })
                             .font(.largeTitle)
                     }
@@ -49,17 +49,23 @@ struct CardContentView: View {
                     Spacer()
                 }
             }
+            .navigationBackButton(colorType: .baseInverted)
             .onDisappear{
                 self.gameModel.stopGame()
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Restart") {
-                        self.gameModel.startGame()
-                    }.hidden(self.gameModel.players.isEmpty)
+                    Button {
+                        self.gameModel.startGame(isRestarting: true)
+                    } label: {
+                        Image(systemName: "repeat")
+                    }
+                    .hidden(self.gameModel.players.isEmpty)
+                    .foregroundColor(themeColorType: .baseInverted)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-        }.padding()
+        }
+        .padding()
     }
 }

@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct DateView: View {
-    @State var text: String
+
+    // MARK: - variables
+
+    @Binding var text: String
+
+    // MARK: - gui
 
     var body: some View {
         HStack {

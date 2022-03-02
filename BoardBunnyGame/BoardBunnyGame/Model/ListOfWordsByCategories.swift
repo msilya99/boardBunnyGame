@@ -5,7 +5,12 @@
 //  Created by Ilya Maslau on 2.03.22.
 //
 
-enum WordCategory: CaseIterable {
+enum WordCategory: CaseIterable, Identifiable, Hashable {
+    
+    var id: String {
+        return self.getTopicTitle()
+    }
+
     case nature
     case animals
     case fantasy

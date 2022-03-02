@@ -14,6 +14,7 @@ struct MenuView: View {
     @StateObject private var gameModel: GameModel = GameModel()
     @State private var isActive: Bool = false
     @State private var shouldShowRules: Bool = false
+    @State private var settingTitle: String = "Настройки игры"
 
     // MARK: - gui
 
@@ -24,11 +25,12 @@ struct MenuView: View {
                     TopPurpleView(size: geometry.size)
                     VStack {
                         ZStack(alignment: .trailing) {
-                            DateView(text: "Настройки игры")
+                            DateView(text: $settingTitle)
                             Button {
                                 shouldShowRules = true
                             } label: {
                                 Image(systemName: "info.circle").font(.title)
+                                    .foregroundColor(BaseColors.sh.getColorByType(.baseLight))
                             }.padding()
                         }
                         .padding()
@@ -40,11 +42,13 @@ struct MenuView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(maxHeight: geometry.size.height / 4)
-                        MenuFormView(selectedTopic: $gameModel.topic,
+                        MenuFormView(selectedTopics: $gameModel.topics,
                                      numbersOfPlayers: $gameModel.numberOfPlayers)
                             .frame(minWidth: geometry.size.width)
+
                         Spacer()
                         PrimaryButton(title: "Начать игру") {
+                            gameModel.updateSelectedTopic()
                             isActive = true
                         }
 
@@ -55,7 +59,7 @@ struct MenuView: View {
             }
             .navigationBarHidden(true)
         }
-        .accentColor(.black)
+        .accentColor(ThemeColors.sh.getColorByType(.base))
         .environmentObject(gameModel)
     }
 }

@@ -16,17 +16,42 @@ class GameModel: ObservableObject {
 
     // MARK: - variables
 
-    @Published var topic: WordCategory = .random
+    @Published var topics: Set<WordCategory> = Set([.random]) {
+        didSet {
+            self.updateSelectedTopic()
+        }
+    }
+
     @Published var numberOfPlayers: Int = 4
-    @Published var players: [SinglePlayer] = []
+    @Published var players: [SinglePlayer] = [] {
+        didSet {
+            guard players.isEmpty else { return }
+            updateSelectedTopic()
+        }
+    }
+
+    @Published var selectedTopic: WordCategory = .random {
+        didSet {
+            selectedTopicTitle = selectedTopic.getTopicTitle()
+        }
+    }
+
+    @Published var selectedTopicTitle: String = WordCategory.random.getTopicTitle()
 
     // MARK: - actions
 
-    func startGame() {
+    func updateSelectedTopic() {
+        guard let topic = topics.randomElement() else { return }
+        selectedTopic = topic
+    }
+
+    func startGame(isRestarting: Bool) {
+        if isRestarting { updateSelectedTopic() }
         self.players = getPlayers()
     }
 
     func stopGame() {
+        self.updateSelectedTopic()
         self.players = []
     }
 
@@ -43,6 +68,6 @@ class GameModel: ObservableObject {
     }
 
     private func getWordForTopic() -> String {
-        return self.topic.getWordsByTopic().randomElement() ?? ""
+        return selectedTopic.getWordsByTopic().randomElement() ?? ""
     }
 }

@@ -17,6 +17,10 @@
 		B260A3A327C597FF0065CE08 /* BaseColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260A3A227C597FF0065CE08 /* BaseColors.swift */; };
 		B260A3A627C5987F0065CE08 /* ViewThemeColorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260A3A527C5987F0065CE08 /* ViewThemeColorModifier.swift */; };
 		B260A3AA27C59A080065CE08 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260A3A927C59A080065CE08 /* GameModel.swift */; };
+		B262F39727CFBAFB00854F34 /* MultiSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B262F39627CFBAFB00854F34 /* MultiSelector.swift */; };
+		B262F39927CFBB0700854F34 /* MultiSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B262F39827CFBB0700854F34 /* MultiSelectorView.swift */; };
+		B262F39B27CFC16100854F34 /* Array + Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B262F39A27CFC16100854F34 /* Array + Ex.swift */; };
+		B262F39D27CFD3DF00854F34 /* NavigationBarBackButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B262F39C27CFD3DF00854F34 /* NavigationBarBackButtonModifier.swift */; };
 		B272010A27CD79D20042EC6E /* View + Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B272010927CD79D20042EC6E /* View + Ex.swift */; };
 		B27750B427C6D28D007BFCA3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27750B327C6D28D007BFCA3 /* CardView.swift */; };
 		B27750B627C6D2D0007BFCA3 /* CardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27750B527C6D2D0007BFCA3 /* CardContentView.swift */; };
@@ -38,6 +42,10 @@
 		B260A3A227C597FF0065CE08 /* BaseColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseColors.swift; sourceTree = "<group>"; };
 		B260A3A527C5987F0065CE08 /* ViewThemeColorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewThemeColorModifier.swift; sourceTree = "<group>"; };
 		B260A3A927C59A080065CE08 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		B262F39627CFBAFB00854F34 /* MultiSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelector.swift; sourceTree = "<group>"; };
+		B262F39827CFBB0700854F34 /* MultiSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectorView.swift; sourceTree = "<group>"; };
+		B262F39A27CFC16100854F34 /* Array + Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + Ex.swift"; sourceTree = "<group>"; };
+		B262F39C27CFD3DF00854F34 /* NavigationBarBackButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarBackButtonModifier.swift; sourceTree = "<group>"; };
 		B272010927CD79D20042EC6E /* View + Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Ex.swift"; sourceTree = "<group>"; };
 		B27750B327C6D28D007BFCA3 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		B27750B527C6D2D0007BFCA3 /* CardContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContentView.swift; sourceTree = "<group>"; };
@@ -92,6 +100,7 @@
 		B260A39527C5947F0065CE08 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B262F39527CFBAE300854F34 /* MultiSelector */,
 				B27750BA27C6DD5E007BFCA3 /* Game views */,
 				B27750B727C6D8F5007BFCA3 /* TopPurpleView.swift */,
 				B260A39927C594BE0065CE08 /* MenuViews */,
@@ -131,6 +140,7 @@
 			children = (
 				B260A3A027C597DC0065CE08 /* Color + EX.swift */,
 				B272010927CD79D20042EC6E /* View + Ex.swift */,
+				B262F39A27CFC16100854F34 /* Array + Ex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -138,6 +148,7 @@
 		B260A3A427C598680065CE08 /* ViewModifiers */ = {
 			isa = PBXGroup;
 			children = (
+				B262F39C27CFD3DF00854F34 /* NavigationBarBackButtonModifier.swift */,
 				B260A3A527C5987F0065CE08 /* ViewThemeColorModifier.swift */,
 			);
 			path = ViewModifiers;
@@ -149,6 +160,15 @@
 				B260A3A927C59A080065CE08 /* GameModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B262F39527CFBAE300854F34 /* MultiSelector */ = {
+			isa = PBXGroup;
+			children = (
+				B262F39627CFBAFB00854F34 /* MultiSelector.swift */,
+				B262F39827CFBB0700854F34 /* MultiSelectorView.swift */,
+			);
+			path = MultiSelector;
 			sourceTree = "<group>";
 		};
 		B27750BA27C6DD5E007BFCA3 /* Game views */ = {
@@ -240,16 +260,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				B260A3A127C597DC0065CE08 /* Color + EX.swift in Sources */,
+				B262F39927CFBB0700854F34 /* MultiSelectorView.swift in Sources */,
 				B260A39E27C5979E0065CE08 /* ThemeColors.swift in Sources */,
 				B298B59827CF9BB0005777D8 /* DateView.swift in Sources */,
 				B27750B827C6D8F5007BFCA3 /* TopPurpleView.swift in Sources */,
 				B260A39827C594970065CE08 /* PrimaryButton.swift in Sources */,
 				B260A3A627C5987F0065CE08 /* ViewThemeColorModifier.swift in Sources */,
 				B260A3AA27C59A080065CE08 /* GameModel.swift in Sources */,
+				B262F39B27CFC16100854F34 /* Array + Ex.swift in Sources */,
 				B272010A27CD79D20042EC6E /* View + Ex.swift in Sources */,
 				B260A39B27C594DC0065CE08 /* MenuFormView.swift in Sources */,
 				B28BD13127CEC679005937D9 /* ListOfWordsByCategories.swift in Sources */,
+				B262F39727CFBAFB00854F34 /* MultiSelector.swift in Sources */,
 				B260A39427C591CD0065CE08 /* MenuView.swift in Sources */,
+				B262F39D27CFD3DF00854F34 /* NavigationBarBackButtonModifier.swift in Sources */,
 				B28455F227C83DCE00C7B90D /* FlashCardView.swift in Sources */,
 				B260A38627C587420065CE08 /* BoardBunnyGameApp.swift in Sources */,
 				B27750B627C6D2D0007BFCA3 /* CardContentView.swift in Sources */,
@@ -402,7 +426,7 @@
 				PRODUCT_NAME = Zaec;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -431,7 +455,7 @@
 				PRODUCT_NAME = Zaec;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
