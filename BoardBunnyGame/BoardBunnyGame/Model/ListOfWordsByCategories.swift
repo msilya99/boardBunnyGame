@@ -11,28 +11,30 @@ enum WordCategory: CaseIterable, Identifiable, Hashable {
         return self.getTopicTitle()
     }
 
-    case nature
-    case animals
-    case fantasy
+    case random
     case marvel
-    case inCity
-    case countries
+    case nature
     case music
-    case school
-    case transport
-    case food
-    case flowers
-    case bodyParts
-    case clothes
-    case cinemaWorld
-    case astrologicalSigns
-    case abstract
+    case animals
     case hobby
     case seriesAndFilms
-    case random
+    case food
+    case fantasy
+    case abstract
+    case cinemaWorld
+    case bodyParts
+    case flowers
+    case clothes
+    case inCity
+    case countries
+    case school
+    case transport
+    case astrologicalSigns
 
     func getTopicTitle() -> String {
         switch self {
+        case .random:
+            return "Случайная тема"
         case .marvel:
             return "MARVEL"
         case .nature:
@@ -69,8 +71,6 @@ enum WordCategory: CaseIterable, Identifiable, Hashable {
             return "Абстрактные вещи"
         case .astrologicalSigns:
             return "Знаки зодиака"
-        case .random:
-            return "Случайная тема"
         }
     }
 

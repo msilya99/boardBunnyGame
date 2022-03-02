@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B260A38127C587420065CE08"
-               BuildableName = "BoardBunnyGame.app"
+               BuildableName = "Zaec.app"
                BlueprintName = "Zaec"
                ReferencedContainer = "container:Zaec.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B260A38127C587420065CE08"
-            BuildableName = "BoardBunnyGame.app"
+            BuildableName = "Zaec.app"
             BlueprintName = "Zaec"
             ReferencedContainer = "container:Zaec.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B260A38127C587420065CE08"
-            BuildableName = "BoardBunnyGame.app"
+            BuildableName = "Zaec.app"
             BlueprintName = "Zaec"
             ReferencedContainer = "container:Zaec.xcodeproj">
          </BuildableReference>
