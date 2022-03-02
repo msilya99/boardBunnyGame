@@ -33,7 +33,7 @@ class GameModel: ObservableObject {
     private func getPlayers() -> [SinglePlayer] {
         var players: [SinglePlayer] = []
         var words = Array(repeating: getWordForTopic(), count: numberOfPlayers - 1)
-        words.append("Ты заяц!")
+        words.append("ЗАЕЦццц!")
         words.shuffle()
 
         for id in 0..<numberOfPlayers {

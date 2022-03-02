@@ -27,7 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B260A38227C587420065CE08 /* BoardBunnyGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoardBunnyGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B260A38227C587420065CE08 /* Zaec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zaec.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B260A38527C587420065CE08 /* BoardBunnyGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardBunnyGameApp.swift; sourceTree = "<group>"; };
 		B260A38927C587420065CE08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B260A39327C591CD0065CE08 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 		B260A38327C587420065CE08 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B260A38227C587420065CE08 /* BoardBunnyGame.app */,
+				B260A38227C587420065CE08 /* Zaec.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -173,9 +173,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B260A38127C587420065CE08 /* BoardBunnyGame */ = {
+		B260A38127C587420065CE08 /* Zaec */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B260A39027C587420065CE08 /* Build configuration list for PBXNativeTarget "BoardBunnyGame" */;
+			buildConfigurationList = B260A39027C587420065CE08 /* Build configuration list for PBXNativeTarget "Zaec" */;
 			buildPhases = (
 				B260A37E27C587420065CE08 /* Sources */,
 				B260A37F27C587420065CE08 /* Frameworks */,
@@ -185,9 +185,9 @@
 			);
 			dependencies = (
 			);
-			name = BoardBunnyGame;
+			name = Zaec;
 			productName = BoardBunnyGame;
-			productReference = B260A38227C587420065CE08 /* BoardBunnyGame.app */;
+			productReference = B260A38227C587420065CE08 /* Zaec.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -205,7 +205,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B260A37D27C587420065CE08 /* Build configuration list for PBXProject "BoardBunnyGame" */;
+			buildConfigurationList = B260A37D27C587420065CE08 /* Build configuration list for PBXProject "Zaec" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -218,7 +218,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B260A38127C587420065CE08 /* BoardBunnyGame */,
+				B260A38127C587420065CE08 /* Zaec */,
 			);
 		};
 /* End PBXProject section */
@@ -399,7 +399,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.clevertec.boardBunnyGame.BoardBunnyGame;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Zaec;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -428,7 +428,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.clevertec.boardBunnyGame.BoardBunnyGame;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Zaec;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -438,7 +438,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B260A37D27C587420065CE08 /* Build configuration list for PBXProject "BoardBunnyGame" */ = {
+		B260A37D27C587420065CE08 /* Build configuration list for PBXProject "Zaec" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B260A38E27C587420065CE08 /* Debug */,
@@ -447,7 +447,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B260A39027C587420065CE08 /* Build configuration list for PBXNativeTarget "BoardBunnyGame" */ = {
+		B260A39027C587420065CE08 /* Build configuration list for PBXNativeTarget "Zaec" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B260A39127C587420065CE08 /* Debug */,
