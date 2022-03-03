@@ -15,7 +15,7 @@ struct CardView: View {
 
     private var player: SinglePlayer
     private var onRemove: (_ player: SinglePlayer) -> Void
-    private var thresholdPercentage: CGFloat = 0.5 // when the user has draged 50% the width of the screen in either direction
+    private var thresholdPercentage: CGFloat = 0.3 // when the user has draged 30% the width of the screen in either direction
 
     // MARK: - init
 
@@ -40,14 +40,14 @@ struct CardView: View {
                 }
             }
             .offset(x: translation.width, y: 0)
-            .rotationEffect(.degrees(Double(translation.width / geometry.size.width) * 40),anchor: .bottom)
+            .rotationEffect(.degrees(Double(translation.width / geometry.size.width) * 30),anchor: .bottom)
             .gesture(
                 DragGesture()
                     .onChanged { value in
                         translation = value.translation
                     }
                     .onEnded { value in
-                        // determine snap distance > 0.5 aka half the width of the screen
+                        // determine snap distance > 0.3 aka half the width of the screen
                         withAnimation(.linear) {
                             if abs(getGesturePercentage(geometry, from: value)) > thresholdPercentage {
                                 onRemove(player)
