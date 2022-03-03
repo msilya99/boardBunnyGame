@@ -9,27 +9,35 @@ import Combine
 import SwiftUI
 import Foundation
 
-struct SinglePlayer: Hashable {
-    var id: Int
-    var word: String
-}
-
 class GameModel: ObservableObject {
 
     // MARK: - variables
 
     private let userDefaults: UserDefaults = .standard
 
-    @AppStorage("numberOfPlayers") var numberOfPlayers: Int = 4
-
-    @Published var topics: Set<WordCategory> {
+    @AppStorage("numberOfPlayers") var numberOfPlayers: Int = 4 {
         didSet {
-            userDefaults[.selectedTopics] = self.topics
-            self.updateSelectedTopic()
+            handleCountChange()
         }
     }
 
-    @Published var players: [SinglePlayer] = [] {
+    // TODO: - handle out of customing
+    @AppStorage("isUsingCustomNames") var isUsingCustomNames: Bool = false
+
+    @Published var topics: Set<WordCategory> {
+        didSet {
+            userDefaults[.selectedTopics] = topics
+            updateSelectedTopic()
+        }
+    }
+
+    @Published var playerNamesModels: [PlayerModel] = [] {
+        didSet {
+            userDefaults[.playerNames] = playerNamesModels
+        }
+    }
+
+    @Published var players: [PlayerModel] = [] {
         didSet {
             guard players.isEmpty else { return }
             updateSelectedTopic()
@@ -48,6 +56,7 @@ class GameModel: ObservableObject {
 
     init() {
         self.topics = userDefaults[.selectedTopics] ?? [.random]
+        self.updatePlayerNames()
     }
 
     // MARK: - actions
@@ -59,24 +68,31 @@ class GameModel: ObservableObject {
 
     func startGame(isRestarting: Bool) {
         if isRestarting { updateSelectedTopic() }
-        self.players = getPlayers()
+        players = getPlayers()
+        updateWordsForPlayers()
     }
 
     func stopGame() {
-        self.updateSelectedTopic()
-        self.players = []
+        updateSelectedTopic()
+        players = []
     }
 
-    private func getPlayers() -> [SinglePlayer] {
-        var players: [SinglePlayer] = []
+    private func handleCountChange() {
+        if numberOfPlayers < playerNamesModels.count {
+            playerNamesModels.removeLast()
+        } else if numberOfPlayers > playerNamesModels.count {
+            playerNamesModels.append(PlayerModel(id: numberOfPlayers, name: "Игрок номер \(numberOfPlayers)"))
+        }
+    }
+
+    private func updateWordsForPlayers() {
         var words = Array(repeating: getWordForTopic(), count: numberOfPlayers - 1)
         words.append("ЗАЕЦццц!")
         words.shuffle()
 
-        for id in 0..<numberOfPlayers {
-            players.append(SinglePlayer(id: id, word: words[id]))
+        for id in 0..<players.count {
+            players[id].word = words.removeFirst()
         }
-        return players
     }
 
     private func getWordForTopic() -> String {
@@ -87,11 +103,30 @@ class GameModel: ObservableObject {
             }
 
             if let randomTopic = allTopics.randomElement() {
-                self.selectedTopic = randomTopic
+                selectedTopic = randomTopic
                 return randomTopic.getWordsByTopic().randomElement() ?? ""
             }
         }
 
         return selectedTopic.getWordsByTopic().randomElement() ?? ""
+    }
+
+    private func getPlayers() -> [PlayerModel] {
+        players = []
+        if let customPlayers = userDefaults[.playerNames],
+           customPlayers.count == numberOfPlayers {
+            return customPlayers
+        } else {
+            var defaultPlayers: [PlayerModel] = []
+            for id in 0..<numberOfPlayers {
+                defaultPlayers.append(PlayerModel(id: id, name: "Игрок номер\(id + 1)"))
+            }
+
+            return defaultPlayers
+        }
+    }
+
+    private func updatePlayerNames() {
+        playerNamesModels = getPlayers()
     }
 }

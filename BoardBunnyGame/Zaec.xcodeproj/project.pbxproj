@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B205062127D1103100E63118 /* UserDefaults + Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B205062027D1103100E63118 /* UserDefaults + Ex.swift */; };
 		B205062527D1588A00E63118 /* DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B205062427D1588A00E63118 /* DefaultsKeys.swift */; };
+		B205062727D1604600E63118 /* ChangeNamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B205062627D1604600E63118 /* ChangeNamesView.swift */; };
+		B205062B27D166CD00E63118 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B205062A27D166CD00E63118 /* PlayerModel.swift */; };
 		B260A38627C587420065CE08 /* BoardBunnyGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260A38527C587420065CE08 /* BoardBunnyGameApp.swift */; };
 		B260A38A27C587420065CE08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B260A38927C587420065CE08 /* Assets.xcassets */; };
 		B260A39427C591CD0065CE08 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260A39327C591CD0065CE08 /* MenuView.swift */; };
@@ -35,6 +37,8 @@
 /* Begin PBXFileReference section */
 		B205062027D1103100E63118 /* UserDefaults + Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults + Ex.swift"; sourceTree = "<group>"; };
 		B205062427D1588A00E63118 /* DefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKeys.swift; sourceTree = "<group>"; };
+		B205062627D1604600E63118 /* ChangeNamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNamesView.swift; sourceTree = "<group>"; };
+		B205062A27D166CD00E63118 /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		B260A38227C587420065CE08 /* Zaec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zaec.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B260A38527C587420065CE08 /* BoardBunnyGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardBunnyGameApp.swift; sourceTree = "<group>"; };
 		B260A38927C587420065CE08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 			children = (
 				B260A39327C591CD0065CE08 /* MenuView.swift */,
 				B260A39A27C594DC0065CE08 /* MenuFormView.swift */,
+				B205062627D1604600E63118 /* ChangeNamesView.swift */,
 			);
 			path = MenuViews;
 			sourceTree = "<group>";
@@ -192,6 +197,7 @@
 			children = (
 				B28BD13027CEC679005937D9 /* ListOfWordsByCategories.swift */,
 				B205062427D1588A00E63118 /* DefaultsKeys.swift */,
+				B205062A27D166CD00E63118 /* PlayerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -272,6 +278,7 @@
 				B27750B827C6D8F5007BFCA3 /* TopPurpleView.swift in Sources */,
 				B260A39827C594970065CE08 /* PrimaryButton.swift in Sources */,
 				B260A3A627C5987F0065CE08 /* ViewThemeColorModifier.swift in Sources */,
+				B205062727D1604600E63118 /* ChangeNamesView.swift in Sources */,
 				B260A3AA27C59A080065CE08 /* GameModel.swift in Sources */,
 				B262F39B27CFC16100854F34 /* Array + Ex.swift in Sources */,
 				B272010A27CD79D20042EC6E /* View + Ex.swift in Sources */,
@@ -283,6 +290,7 @@
 				B262F39D27CFD3DF00854F34 /* NavigationBarBackButtonModifier.swift in Sources */,
 				B28455F227C83DCE00C7B90D /* FlashCardView.swift in Sources */,
 				B260A38627C587420065CE08 /* BoardBunnyGameApp.swift in Sources */,
+				B205062B27D166CD00E63118 /* PlayerModel.swift in Sources */,
 				B27750B627C6D2D0007BFCA3 /* CardContentView.swift in Sources */,
 				B27750B427C6D28D007BFCA3 /* CardView.swift in Sources */,
 				B260A3A327C597FF0065CE08 /* BaseColors.swift in Sources */,

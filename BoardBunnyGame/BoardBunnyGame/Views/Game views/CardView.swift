@@ -13,13 +13,13 @@ struct CardView: View {
 
     @State private var translation: CGSize = .zero
 
-    private var player: SinglePlayer
-    private var onRemove: (_ player: SinglePlayer) -> Void
+    private var player: PlayerModel
+    private var onRemove: (_ player: PlayerModel) -> Void
     private var thresholdPercentage: CGFloat = 0.3 // when the user has draged 30% the width of the screen in either direction
 
     // MARK: - init
 
-    init(player: SinglePlayer, onRemove: @escaping (_ player: SinglePlayer) -> Void) {
+    init(player: PlayerModel, onRemove: @escaping (_ player: PlayerModel) -> Void) {
         self.player = player
         self.onRemove = onRemove
     }
@@ -30,11 +30,11 @@ struct CardView: View {
         GeometryReader { geometry in
             HStack(alignment: .center) {
                 Flashcard(size: geometry.size) {
-                    Text("Игрок номер \(player.id + 1)")
+                    Text("\(player.name)")
                         .font(.largeTitle)
                         .foregroundColor(BaseColors.sh.getColorByType(.baseLight))
                 } back: {
-                    Text("\(player.word)")
+                    Text("\(player.word ?? "Произошла ошибка")")
                         .font(.largeTitle)
                         .foregroundColor(BaseColors.sh.getColorByType(.baseLight))
                 }

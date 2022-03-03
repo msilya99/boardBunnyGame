@@ -11,23 +11,29 @@ struct MenuFormView: View {
 
     // MARK: - variables
 
-    @Binding var selectedTopics: Set<WordCategory>
-    @Binding var numbersOfPlayers: Int
-
+    @ObservedObject var gameModel: GameModel
     @Environment(\.colorScheme) var colorScheme
 
     // MARK: - gui
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Stepper("Игроков: \(numbersOfPlayers)",
-                    value: $numbersOfPlayers, in: 3...10)
-                .colorInvert()
-
             MultiSelector(label: Text("Тема:"),
                           options: WordCategory.allCases,
                           optionToString: { $0.getTopicTitle() },
-                          selected: $selectedTopics)
+                          selected: $gameModel.topics)
+            Stepper("Игроков: \(gameModel.numberOfPlayers)",
+                    value: $gameModel.numberOfPlayers, in: 3...10)
+                .colorInvert()
+            Toggle("\(gameModel.isUsingCustomNames ? "Кастомные имена" : "Дефолтные имена")",
+                   isOn: gameModel.$isUsingCustomNames)
+                .foregroundColor(themeColorType: .baseInverted)
+                .tint(Color.init(#colorLiteral(red: 0.8901987672, green: 0.7450953126, blue: 0.8039216399, alpha: 1)))
+            if gameModel.isUsingCustomNames {
+                NavigationLink("Изменить имена \(Image(systemName: "pencil"))",
+                               destination: ChangeNamesView(gameModel: gameModel))
+                    .foregroundColor(themeColorType: .baseInverted)
+            }
         }
         .padding(8)
         .backgroundColor(themeColorType: .base)

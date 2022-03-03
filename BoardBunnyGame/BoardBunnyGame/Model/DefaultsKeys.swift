@@ -11,4 +11,8 @@ extension UserDefaults.Key {
     static var selectedTopics: UserDefaults.Key<Set<WordCategory>> {
         return .init(name: "selectedTopics")
     }
+
+    static var playerNames: UserDefaults.Key<[PlayerModel]> {
+        return .init(name: "playerNames")
+    }
 }
