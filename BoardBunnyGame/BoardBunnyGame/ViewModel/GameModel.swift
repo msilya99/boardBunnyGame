@@ -68,6 +68,18 @@ class GameModel: ObservableObject {
     }
 
     private func getWordForTopic() -> String {
+        if selectedTopic == .random {
+            var allTopics = WordCategory.allCases
+            if let indexOfRandom = WordCategory.allCases.firstIndex(of: .random) {
+                allTopics.remove(at: indexOfRandom)
+            }
+
+            if let randomTopic = allTopics.randomElement() {
+                self.selectedTopic = randomTopic
+                return randomTopic.getWordsByTopic().randomElement() ?? ""
+            }
+        }
+
         return selectedTopic.getWordsByTopic().randomElement() ?? ""
     }
 }

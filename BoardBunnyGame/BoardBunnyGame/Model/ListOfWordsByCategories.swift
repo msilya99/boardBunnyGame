@@ -112,18 +112,8 @@ enum WordCategory: CaseIterable, Identifiable, Hashable {
             return Words.musicWords
         case .hobby:
             return Words.hobbyWords
-        case .random:
-            var words: [String] = []
-            var allTopics = WordCategory.allCases
-            if let indexOfRandom = WordCategory.allCases.firstIndex(of: .random) {
-                allTopics.remove(at: indexOfRandom)
-            }
-
-            allTopics.forEach { category in
-                words += category.getWordsByTopic()
-            }
-
-            return words
+        default:
+            return []
         }
     }
 }
