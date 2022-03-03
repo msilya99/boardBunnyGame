@@ -6,6 +6,8 @@
 //
 
 import Combine
+import SwiftUI
+import Foundation
 
 struct SinglePlayer: Hashable {
     var id: Int
@@ -16,13 +18,17 @@ class GameModel: ObservableObject {
 
     // MARK: - variables
 
-    @Published var topics: Set<WordCategory> = Set([.random]) {
+    private let userDefaults: UserDefaults = .standard
+
+    @AppStorage("numberOfPlayers") var numberOfPlayers: Int = 4
+
+    @Published var topics: Set<WordCategory> {
         didSet {
+            userDefaults[.selectedTopics] = self.topics
             self.updateSelectedTopic()
         }
     }
 
-    @Published var numberOfPlayers: Int = 4
     @Published var players: [SinglePlayer] = [] {
         didSet {
             guard players.isEmpty else { return }
@@ -37,6 +43,12 @@ class GameModel: ObservableObject {
     }
 
     @Published var selectedTopicTitle: String = WordCategory.random.getTopicTitle()
+
+    // MARK: - initialization
+
+    init() {
+        self.topics = userDefaults[.selectedTopics] ?? [.random]
+    }
 
     // MARK: - actions
 

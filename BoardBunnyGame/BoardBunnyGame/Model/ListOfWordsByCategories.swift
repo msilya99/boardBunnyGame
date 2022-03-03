@@ -5,7 +5,7 @@
 //  Created by Ilya Maslau on 2.03.22.
 //
 
-enum WordCategory: CaseIterable, Identifiable, Hashable {
+enum WordCategory: CaseIterable, Identifiable, Hashable, Codable {
     
     var id: String {
         return self.getTopicTitle()
