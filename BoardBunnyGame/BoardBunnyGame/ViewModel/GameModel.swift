@@ -119,13 +119,19 @@ class GameModel: ObservableObject {
 
     private func getPlayers() -> [PlayerModel] {
         players = []
-        if isUsingCustomNames, let customPlayers = userDefaults[.playerNames],
-           customPlayers.count == numberOfPlayers {
+        if isUsingCustomNames, var customPlayers = userDefaults[.playerNames] {
+            if customPlayers.count < numberOfPlayers {
+                for id in customPlayers.count..<numberOfPlayers {
+                    customPlayers.append(PlayerModel(id: id + 1, name: "Игрок номер \(id + 1)"))
+                }
+            } else if customPlayers.count > numberOfPlayers {
+                customPlayers.removeLast(customPlayers.count - numberOfPlayers)
+            }
             return customPlayers
         } else {
             var defaultPlayers: [PlayerModel] = []
             for id in 0..<numberOfPlayers {
-                defaultPlayers.append(PlayerModel(id: id, name: "Игрок номер\(id + 1)"))
+                defaultPlayers.append(PlayerModel(id: id + 1, name: "Игрок номер \(id + 1)"))
             }
 
             return defaultPlayers
