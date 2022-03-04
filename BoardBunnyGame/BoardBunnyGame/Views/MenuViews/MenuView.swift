@@ -15,6 +15,8 @@ struct MenuView: View {
     @State private var isActive: Bool = false
     @State private var shouldShowRules: Bool = false
     @State private var settingTitle: String = "Настройки игры"
+    @State private var countOfTapps: Int = 0
+    @State private var bunnyRotation = 0.0
 
     // MARK: - gui
 
@@ -42,6 +44,11 @@ struct MenuView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(maxHeight: geometry.size.height / 4)
+                            .rotationEffect(.degrees(bunnyRotation))
+                            .onTapGesture {
+                                rotateBunnyIfNeeded()
+                            }
+
                         MenuFormView(gameModel: gameModel, isToogleOn: gameModel.isUsingCustomNames)
                             .frame(minWidth: geometry.size.width)
 
@@ -60,6 +67,19 @@ struct MenuView: View {
         }
         .accentColor(ThemeColors.sh.getColorByType(.base))
         .environmentObject(gameModel)
+    }
+
+    // MARK: - easter egg
+
+    private func rotateBunnyIfNeeded() {
+        countOfTapps += 1
+        guard countOfTapps == 8 else { return }
+        gameModel.isTwoBunnyInATeam.toggle()
+        countOfTapps = 0
+        let animationTime = 0.5
+        withAnimation(Animation.linear(duration: animationTime)) {
+            bunnyRotation += 180
+        }
     }
 }
 

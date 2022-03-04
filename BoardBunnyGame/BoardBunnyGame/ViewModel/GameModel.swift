@@ -27,6 +27,8 @@ class GameModel: ObservableObject {
         }
     }
 
+    @Published var isTwoBunnyInATeam: Bool = false
+
     @Published var topics: Set<WordCategory> {
         didSet {
             userDefaults[.selectedTopics] = topics
@@ -96,8 +98,12 @@ class GameModel: ObservableObject {
     }
 
     private func updateWordsForPlayers() {
-        var words = Array(repeating: getWordForTopic(), count: numberOfPlayers - 1)
+        let minesWords = isTwoBunnyInATeam ? 2 : 1
+        var words = Array(repeating: getWordForTopic(), count: numberOfPlayers - minesWords)
         words.append("ЗАЕЦццц!")
+        if isTwoBunnyInATeam {
+            words.append("ЗАЕЦццц!")
+        }
         words.shuffle()
 
         for id in 0..<players.count {
