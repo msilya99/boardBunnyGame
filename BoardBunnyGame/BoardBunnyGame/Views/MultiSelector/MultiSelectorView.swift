@@ -34,6 +34,7 @@ struct MultiSelectionView<Selectable: Identifiable & Hashable>: View {
         }
         .navigationTitle("Выберите темы")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBackButton(colorType: .base)
     }
 
     private func toggleSelection(selectable: Selectable) {

@@ -28,6 +28,7 @@ struct ChangeNamesView: View {
             })
                 .hidden(gameModel.numberOfPlayers == 10)
         }
+        .navigationBackButton(colorType: .base)
         .navigationTitle("Изменить имена")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
