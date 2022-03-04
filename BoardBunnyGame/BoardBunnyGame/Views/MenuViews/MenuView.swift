@@ -42,7 +42,7 @@ struct MenuView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(maxHeight: geometry.size.height / 4)
-                        MenuFormView(gameModel: gameModel)
+                        MenuFormView(gameModel: gameModel, isToogleOn: gameModel.isUsingCustomNames)
                             .frame(minWidth: geometry.size.width)
 
                         Spacer()

@@ -21,7 +21,11 @@ class GameModel: ObservableObject {
         }
     }
 
-    @AppStorage("isUsingCustomNames") var isUsingCustomNames: Bool = false
+    @AppStorage("isUsingCustomNames") var isUsingCustomNames: Bool = false {
+        didSet {
+            updatePlayerNames()
+        }
+    }
 
     @Published var topics: Set<WordCategory> {
         didSet {
@@ -76,6 +80,8 @@ class GameModel: ObservableObject {
         updateSelectedTopic()
         players = []
     }
+
+    // MARK: - private actions
 
     private func handleCountChange() {
         if numberOfPlayers < playerNamesModels.count {

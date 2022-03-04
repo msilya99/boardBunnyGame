@@ -13,6 +13,7 @@ struct MenuFormView: View {
 
     @ObservedObject var gameModel: GameModel
     @Environment(\.colorScheme) var colorScheme
+    @State var isToogleOn: Bool
 
     // MARK: - gui
 
@@ -26,7 +27,10 @@ struct MenuFormView: View {
                     value: $gameModel.numberOfPlayers, in: 3...10)
                 .colorInvert()
             Toggle("Использовать имена",
-                   isOn: gameModel.$isUsingCustomNames)
+                   isOn: $isToogleOn)
+                .onChange(of: isToogleOn) { isOn in
+                    gameModel.isUsingCustomNames = isOn
+                }
                 .foregroundColor(themeColorType: .baseInverted)
                 .tint(Color.init(#colorLiteral(red: 0.8901987672, green: 0.7450953126, blue: 0.8039216399, alpha: 1)))
             if gameModel.isUsingCustomNames {
