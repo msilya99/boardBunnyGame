@@ -81,13 +81,17 @@ class GameModel: ObservableObject {
         players = []
     }
 
+    func getDefaultName(id: Int) -> String {
+        return "Игрок номер \(id)"
+    }
+
     // MARK: - private actions
 
     private func handleCountChange() {
         if numberOfPlayers < playerNamesModels.count {
             playerNamesModels.removeLast()
         } else if numberOfPlayers > playerNamesModels.count {
-            playerNamesModels.append(PlayerModel(id: numberOfPlayers, name: "Игрок номер \(numberOfPlayers)"))
+            playerNamesModels.append(PlayerModel(id: numberOfPlayers, name: getDefaultName(id: numberOfPlayers)))
         }
     }
 
@@ -122,7 +126,7 @@ class GameModel: ObservableObject {
         if isUsingCustomNames, var customPlayers = userDefaults[.playerNames] {
             if customPlayers.count < numberOfPlayers {
                 for id in customPlayers.count..<numberOfPlayers {
-                    customPlayers.append(PlayerModel(id: id + 1, name: "Игрок номер \(id + 1)"))
+                    customPlayers.append(PlayerModel(id: id + 1, name: getDefaultName(id: id + 1)))
                 }
             } else if customPlayers.count > numberOfPlayers {
                 customPlayers.removeLast(customPlayers.count - numberOfPlayers)
@@ -131,7 +135,7 @@ class GameModel: ObservableObject {
         } else {
             var defaultPlayers: [PlayerModel] = []
             for id in 0..<numberOfPlayers {
-                defaultPlayers.append(PlayerModel(id: id + 1, name: "Игрок номер \(id + 1)"))
+                defaultPlayers.append(PlayerModel(id: id + 1, name: getDefaultName(id: id + 1)))
             }
 
             return defaultPlayers

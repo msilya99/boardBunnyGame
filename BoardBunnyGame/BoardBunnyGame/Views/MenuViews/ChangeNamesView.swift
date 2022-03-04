@@ -55,7 +55,10 @@ struct ChangeNamesView: View {
     @ViewBuilder
     func deletableView() -> some View {
         let view = ForEach($gameModel.playerNamesModels, id: \.id) { player in
-            TextField("Введите имя", text: player.name)
+            TextField("Введите имя", text: player.name) { editingChanged in
+                guard !editingChanged, player.name.wrappedValue.isEmpty else { return }
+                player.name.wrappedValue = gameModel.getDefaultName(id: player.id.wrappedValue)
+            }
         }.onMove(perform: move)
 
         if gameModel.numberOfPlayers > 3 {
