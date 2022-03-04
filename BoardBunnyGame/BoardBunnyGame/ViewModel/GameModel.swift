@@ -21,7 +21,6 @@ class GameModel: ObservableObject {
         }
     }
 
-    // TODO: - handle out of customing
     @AppStorage("isUsingCustomNames") var isUsingCustomNames: Bool = false
 
     @Published var topics: Set<WordCategory> {
@@ -33,6 +32,7 @@ class GameModel: ObservableObject {
 
     @Published var playerNamesModels: [PlayerModel] = [] {
         didSet {
+            guard isUsingCustomNames else { return }
             userDefaults[.playerNames] = playerNamesModels
         }
     }
@@ -113,7 +113,7 @@ class GameModel: ObservableObject {
 
     private func getPlayers() -> [PlayerModel] {
         players = []
-        if let customPlayers = userDefaults[.playerNames],
+        if isUsingCustomNames, let customPlayers = userDefaults[.playerNames],
            customPlayers.count == numberOfPlayers {
             return customPlayers
         } else {

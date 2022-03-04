@@ -25,7 +25,7 @@ struct MenuFormView: View {
             Stepper("Игроков: \(gameModel.numberOfPlayers)",
                     value: $gameModel.numberOfPlayers, in: 3...10)
                 .colorInvert()
-            Toggle("\(gameModel.isUsingCustomNames ? "Кастомные имена" : "Дефолтные имена")",
+            Toggle("Использовать имена",
                    isOn: gameModel.$isUsingCustomNames)
                 .foregroundColor(themeColorType: .baseInverted)
                 .tint(Color.init(#colorLiteral(red: 0.8901987672, green: 0.7450953126, blue: 0.8039216399, alpha: 1)))
