@@ -8,11 +8,13 @@
 import Combine
 import SwiftUI
 import Foundation
+import FirebaseFirestore
 
 class GameModel: ObservableObject {
 
     // MARK: - variables
 
+    private let firestoreDB = Firestore.firestore()
     private let userDefaults: UserDefaults = .standard
 
     @AppStorage("numberOfPlayers") var numberOfPlayers: Int = 4 {
@@ -63,6 +65,7 @@ class GameModel: ObservableObject {
     init() {
         self.topics = userDefaults[.selectedTopics] ?? [.random]
         self.updatePlayerNames()
+        self.fetchFirebaseData()
     }
 
     // MARK: - actions
@@ -151,4 +154,22 @@ class GameModel: ObservableObject {
     private func updatePlayerNames() {
         playerNamesModels = getPlayers()
     }
+
+    // MARK: - firebase
+
+    private func fetchFirebaseData() {
+        firestoreDB.collection("topics").addSnapshotListener { (querySnapshot, error) in
+            guard let documents = querySnapshot?.documents else {
+                print("No documents")
+                return
+            }
+
+            let models = documents.compactMap { (queryDocumentSnapshot) -> FirebaseTopicModel? in
+                let data = queryDocumentSnapshot.data()
+                let topics = data["topics"]
+                return nil
+            }
+        }
+    }
+
 }
