@@ -34,11 +34,12 @@ struct MultiSelectionView<Selectable: Identifiable & Hashable>: View {
         }
         .navigationTitle("Выберите темы")
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBackButton(colorType: .base)
+        .navigationBackButton(themeColor: ThemeColors.sh.getColorByType(.base))
     }
 
     private func toggleSelection(selectable: Selectable) {
-        if let existingIndex = selected.firstIndex(where: { $0.id == selectable.id }) {
+        if let existingIndex = selected.firstIndex(where: { $0.id == selectable.id }),
+           selected.count > 1 {
             selected.remove(at: existingIndex)
         } else {
             selected.insert(selectable)

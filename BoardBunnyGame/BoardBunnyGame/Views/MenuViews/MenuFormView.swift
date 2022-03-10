@@ -21,7 +21,7 @@ struct MenuFormView: View {
         VStack(alignment: .leading, spacing: 16) {
             MultiSelector(label: Text("Тема:"),
                           options: gameModel.availableCategories,
-                          optionToString: { $0.getTopicTitle() },
+                          optionToString: { $0.category },
                           selected: $gameModel.selectedCategories)
             Stepper("Игроков: \(gameModel.numberOfPlayers)",
                     value: $gameModel.numberOfPlayers, in: 3...10)

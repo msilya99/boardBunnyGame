@@ -46,7 +46,7 @@ struct CardContentView: View {
                     Spacer()
                 }
             }
-            .navigationBackButton(colorType: .baseInverted)
+            .navigationBackButton(themeColor: BaseColors.sh.getColorByType(.baseLight))
             .onDisappear{
                 self.gameModel.stopGame()
             }

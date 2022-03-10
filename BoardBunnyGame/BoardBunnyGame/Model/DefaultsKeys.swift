@@ -8,7 +8,7 @@
 import Foundation
 
 extension UserDefaults.Key {
-    static var selectedTopics: UserDefaults.Key<Set<WordCategory>> {
+    static var selectedTopics: UserDefaults.Key<Set<FirebaseCategoryModel>> {
         return .init(name: "selectedTopics")
     }
 

@@ -12,7 +12,7 @@ struct NavigationBackButton: ViewModifier {
     // MARK: - variables
 
     @Environment(\.presentationMode) var presentationMode
-    var colorType: ThemeColorType
+    var themeColor: Color?
     var text: String?
 
     // MARK: - gui
@@ -24,11 +24,11 @@ struct NavigationBackButton: ViewModifier {
                 leading: Button(action: {  presentationMode.wrappedValue.dismiss() }, label: {
                     HStack(spacing: 2) {
                         Image(systemName: "chevron.backward")
-                            .foregroundColor(themeColorType: colorType)
+                            .foregroundColor(themeColor: themeColor)
 
                         if let text = text {
                             Text(text)
-                                .foregroundColor(themeColorType: colorType)
+                                .foregroundColor(themeColor: themeColor)
                         }
                     }
                 })
@@ -37,7 +37,7 @@ struct NavigationBackButton: ViewModifier {
 }
 
 extension View {
-    func navigationBackButton(colorType: ThemeColorType, text: String? = "Назад") -> some View {
-        modifier(NavigationBackButton(colorType: colorType, text: text))
+    func navigationBackButton(themeColor: Color, text: String? = "Назад") -> some View {
+        modifier(NavigationBackButton(themeColor: themeColor, text: text))
     }
 }

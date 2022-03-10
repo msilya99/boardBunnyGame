@@ -18,7 +18,7 @@ class GameModel: ObservableObject {
     private let firestoreDB = Firestore.firestore()
     private let userDefaults: UserDefaults = .standard
 
-    var availableCategories: [WordCategory] = []
+    var availableCategories: [FirebaseCategoryModel] = []
 
     @AppStorage("numberOfPlayers") var numberOfPlayers: Int = 4 {
         didSet {
@@ -40,7 +40,7 @@ class GameModel: ObservableObject {
 
     @Published var isTwoBunnyInATeam: Bool = false
 
-    @Published var selectedCategories: Set<WordCategory> {
+    @Published var selectedCategories: Set<FirebaseCategoryModel> = [] {
         didSet {
             userDefaults[.selectedTopics] = selectedCategories
             updateSelectedCategory()
@@ -61,26 +61,29 @@ class GameModel: ObservableObject {
         }
     }
 
-    @Published var selectedCategory: WordCategory = .random {
+    @Published var selectedCategory: FirebaseCategoryModel? {
         didSet {
-            selectedCategoryTitle = selectedCategory.getTopicTitle()
+            selectedCategoryTitle = selectedCategory?.category ?? ""
         }
     }
 
-    @Published var selectedCategoryTitle: String = WordCategory.random.getTopicTitle()
+    @Published var selectedCategoryTitle: String = ""
 
     // MARK: - initialization
 
     init() {
-        self.selectedCategories = userDefaults[.selectedTopics] ?? [.random]
         self.updatePlayerNames()
         self.fetchFirebaseData()
+        //                self.setDb()
     }
 
     // MARK: - actions
 
     func updateSelectedCategory() {
-        guard let category = selectedCategories.randomElement() else { return }
+        guard let category = selectedCategories.randomElement() else {
+            selectedCategory = nil
+            return
+        }
         selectedCategory = category
     }
 
@@ -124,19 +127,17 @@ class GameModel: ObservableObject {
     }
 
     private func getWordForTopic() -> String {
-        if selectedCategory == .random {
+        if selectedCategory?.isRandomCategory == true {
             var allTopics = availableCategories
-            if let indexOfRandom = availableCategories.firstIndex(of: .random) {
-                allTopics.remove(at: indexOfRandom)
-            }
+            allTopics.removeAll { $0.isRandomCategory == true }
 
             if let randomTopic = allTopics.randomElement() {
                 selectedCategory = randomTopic
-                return categoriesModel?.categories.first(where: { $0.category == randomTopic })?.words.randomElement() ?? ""
+                return categoriesModel?.categories.first(where: { $0 == randomTopic })?.words.randomElement() ?? ""
             }
         }
 
-        return categoriesModel?.categories.first(where: { $0.category == selectedCategory })?.words.randomElement() ?? ""
+        return categoriesModel?.categories.first(where: { $0 == selectedCategory })?.words.randomElement() ?? ""
     }
 
     private func getPlayers() -> [PlayerModel] {
@@ -165,7 +166,8 @@ class GameModel: ObservableObject {
     }
 
     private func updateCategories() {
-        self.availableCategories = self.categoriesModel?.categories.compactMap( { $0.category } ) ?? []
+        availableCategories = categoriesModel?.categories ?? []
+        updateSelectedIfNeeded()
     }
 
     // MARK: - firebase
@@ -212,33 +214,41 @@ class GameModel: ObservableObject {
     private func getCategoriesModel() -> FirebaseCategoriesModel {
         let categories = WordCategory.allCases
         let topics = categories.compactMap { category in
-            return FirebaseCategoryModel(id: nil,
-                                         category: category,
-                                         words: category.getWordsByTopic())
+            return FirebaseCategoryModel(id: UUID().uuidString,
+                                         category: category.getTopicTitle(),
+                                         words: category.getWordsByTopic(),
+                                         isRandomCategory: category == .random ? true : nil)
         }
 
         return FirebaseCategoriesModel(categories: topics)
     }
 
     private func saveModelToFile(_ model: FirebaseCategoriesModel) {
-        let existedCategories = Set(model.categories.compactMap { $0.category })
-        self.selectedCategories = self.selectedCategories.intersection(existedCategories)
-        self.categoriesModel = model
+        categoriesModel = model
         TopicsFileManagerHelper().saveModelToFile(model: model)
     }
 
+    private func updateSelectedIfNeeded() {
+        selectedCategories = userDefaults[.selectedTopics] ?? []
+
+        if let oldSelectedCategories = categoriesModel?.categories
+            .filter({ selectedCategories.compactMap({ $0.category}).contains($0.category) }) {
+            selectedCategories = Set(oldSelectedCategories)
+        }
+
+        guard selectedCategories.isEmpty else { return }
+
+        if let randomCategory = categoriesModel?.categories.first(where: { $0.isRandomCategory == true }) {
+            selectedCategories = [randomCategory]
+        } else if let randomCategory = categoriesModel?.categories.first {
+            selectedCategories = [randomCategory]
+        }
+    }
+
     /// In case u need update db from scratch
-//    private func setDb() {
-//        var categories = WordCategory.allCases
-//        let topics = categories.flatMap { category in
-//            return FirebaseCategoryModel(id: nil,
-//                                         category: category,
-//                                         words: category.getWordsByTopic())
-//        }
-//
-//        let dbModel = FirebaseCategoriesModel(categories: topics)
-//
-//        let docRef = firestoreDB.collection("topics").document("topics")
-//        try? docRef.setData(from: dbModel)
-//    }
+    private func setDb() {
+        let dbModel = self.getCategoriesModel()
+        let docRef = firestoreDB.collection("topics").document("topics")
+        try? docRef.setData(from: dbModel)
+    }
 }

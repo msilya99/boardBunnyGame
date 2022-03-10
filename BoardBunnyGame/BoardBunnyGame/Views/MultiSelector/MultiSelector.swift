@@ -15,8 +15,13 @@ struct MultiSelector<LabelView: View, Selectable: Identifiable & Hashable>: View
     var selected: Binding<Set<Selectable>>
 
     private var formattedSelectedListString: String {
-        guard let singleTheme = selected.wrappedValue.single else { return "Несколько тем" }
-        return optionToString(singleTheme)
+        if let singleTheme = selected.wrappedValue.single {
+            return optionToString(singleTheme)
+        } else if selected.wrappedValue.isEmpty {
+            return "Не выбрана"
+        } else {
+            return "Несколько тем"
+        }
     }
 
     var body: some View {
