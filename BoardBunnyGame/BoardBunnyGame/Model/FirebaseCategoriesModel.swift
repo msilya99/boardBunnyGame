@@ -8,23 +8,23 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-struct FirebaseTopicModel: Codable {
+struct FirebaseCategoryModel: Codable {
     enum CodingKeys: CodingKey {
-        case topicName, words
+        case category, words
     }
 
     @DocumentID var id: String? = nil
-    var topicName: WordCategory
+    var category: WordCategory
     var words: [String]
 
     func encode(to encoder: Encoder) throws {
         var map = encoder.container(keyedBy: CodingKeys.self)
 
-        try map.encode(self.topicName, forKey: .topicName)
+        try map.encode(self.category, forKey: .category)
         try map.encode(self.words, forKey: .words)
     }
 }
 
-struct FirebaseTopicsModel: Codable {
-    var topics: [FirebaseTopicModel]
+struct FirebaseCategoriesModel: Codable {
+    var categories: [FirebaseCategoryModel]
 }

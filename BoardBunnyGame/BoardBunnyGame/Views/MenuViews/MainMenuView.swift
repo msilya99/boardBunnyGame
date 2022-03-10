@@ -53,7 +53,7 @@ struct MainMenuView: View {
 
                     Spacer()
                     PrimaryButton(title: "Начать игру") {
-                        gameModel.updateSelectedTopic()
+                        gameModel.updateSelectedCategory()
                         isActive = true
                     }
 

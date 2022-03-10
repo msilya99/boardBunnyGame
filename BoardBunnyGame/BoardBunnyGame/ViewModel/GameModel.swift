@@ -18,6 +18,8 @@ class GameModel: ObservableObject {
     private let firestoreDB = Firestore.firestore()
     private let userDefaults: UserDefaults = .standard
 
+    var availableCategories: [WordCategory] = []
+
     @AppStorage("numberOfPlayers") var numberOfPlayers: Int = 4 {
         didSet {
             handleCountChange()
@@ -30,14 +32,18 @@ class GameModel: ObservableObject {
         }
     }
 
-    @Published var topicsModel: FirebaseTopicsModel?
+    @Published var categoriesModel: FirebaseCategoriesModel? {
+        didSet {
+            updateCategories()
+        }
+    }
 
     @Published var isTwoBunnyInATeam: Bool = false
 
-    @Published var topics: Set<WordCategory> {
+    @Published var selectedCategories: Set<WordCategory> {
         didSet {
-            userDefaults[.selectedTopics] = topics
-            updateSelectedTopic()
+            userDefaults[.selectedTopics] = selectedCategories
+            updateSelectedCategory()
         }
     }
 
@@ -51,41 +57,41 @@ class GameModel: ObservableObject {
     @Published var players: [PlayerModel] = [] {
         didSet {
             guard players.isEmpty else { return }
-            updateSelectedTopic()
+            updateSelectedCategory()
         }
     }
 
-    @Published var selectedTopic: WordCategory = .random {
+    @Published var selectedCategory: WordCategory = .random {
         didSet {
-            selectedTopicTitle = selectedTopic.getTopicTitle()
+            selectedCategoryTitle = selectedCategory.getTopicTitle()
         }
     }
 
-    @Published var selectedTopicTitle: String = WordCategory.random.getTopicTitle()
+    @Published var selectedCategoryTitle: String = WordCategory.random.getTopicTitle()
 
     // MARK: - initialization
 
     init() {
-        self.topics = userDefaults[.selectedTopics] ?? [.random]
+        self.selectedCategories = userDefaults[.selectedTopics] ?? [.random]
         self.updatePlayerNames()
         self.fetchFirebaseData()
     }
 
     // MARK: - actions
 
-    func updateSelectedTopic() {
-        guard let topic = topics.randomElement() else { return }
-        selectedTopic = topic
+    func updateSelectedCategory() {
+        guard let category = selectedCategories.randomElement() else { return }
+        selectedCategory = category
     }
 
     func startGame(isRestarting: Bool) {
-        if isRestarting { updateSelectedTopic() }
+        if isRestarting { updateSelectedCategory() }
         players = getPlayers()
         updateWordsForPlayers()
     }
 
     func stopGame() {
-        updateSelectedTopic()
+        updateSelectedCategory()
         players = []
     }
 
@@ -118,19 +124,19 @@ class GameModel: ObservableObject {
     }
 
     private func getWordForTopic() -> String {
-        if selectedTopic == .random {
-            var allTopics = WordCategory.allCases
-            if let indexOfRandom = WordCategory.allCases.firstIndex(of: .random) {
+        if selectedCategory == .random {
+            var allTopics = availableCategories
+            if let indexOfRandom = availableCategories.firstIndex(of: .random) {
                 allTopics.remove(at: indexOfRandom)
             }
 
             if let randomTopic = allTopics.randomElement() {
-                selectedTopic = randomTopic
-                return randomTopic.getWordsByTopic().randomElement() ?? ""
+                selectedCategory = randomTopic
+                return categoriesModel?.categories.first(where: { $0.category == randomTopic })?.words.randomElement() ?? ""
             }
         }
 
-        return selectedTopic.getWordsByTopic().randomElement() ?? ""
+        return categoriesModel?.categories.first(where: { $0.category == selectedCategory })?.words.randomElement() ?? ""
     }
 
     private func getPlayers() -> [PlayerModel] {
@@ -158,6 +164,10 @@ class GameModel: ObservableObject {
         playerNamesModels = getPlayers()
     }
 
+    private func updateCategories() {
+        self.availableCategories = self.categoriesModel?.categories.compactMap( { $0.category } ) ?? []
+    }
+
     // MARK: - firebase
 
     private func fetchFirebaseData() {
@@ -165,25 +175,25 @@ class GameModel: ObservableObject {
         docRef.getDocument { [weak self] document, error in
             if error == nil, let document = document,
                (try? document.data(as: FirebaseShouldBeUpdatedModel.self))?.shouldBeUpdated == true {
-                self?.fetchFirebaseTopicsModel()
+                self?.fetchFirebaseCategoriesModel()
             } else {
                 self?.getModelFromFile()
             }
         }
     }
 
-    private func fetchFirebaseTopicsModel() {
+    private func fetchFirebaseCategoriesModel() {
         firestoreDB.collection("topics").addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("No documents")
                 return
             }
 
-            let models = documents.flatMap { (queryDocumentSnapshot) -> [FirebaseTopicModel] in
-                return (try? queryDocumentSnapshot.data(as: FirebaseTopicsModel.self).topics) ?? []
+            let models = documents.flatMap { (queryDocumentSnapshot) -> [FirebaseCategoryModel] in
+                return (try? queryDocumentSnapshot.data(as: FirebaseCategoriesModel.self).categories) ?? []
             }
 
-            self.saveModelToFile(.init(topics: models))
+            self.saveModelToFile(.init(categories: models))
         }
     }
 
@@ -191,41 +201,44 @@ class GameModel: ObservableObject {
 
     private func getModelFromFile() {
         if let model = TopicsFileManagerHelper().getModelFromFile() {
-            self.topicsModel = model
+            self.categoriesModel = model
         } else {
-            self.saveModelToFile(self.getTopicsModel())
+            self.saveModelToFile(self.getCategoriesModel())
         }
     }
 
     // MARK: - save actions
 
-    private func getTopicsModel() -> FirebaseTopicsModel {
+    private func getCategoriesModel() -> FirebaseCategoriesModel {
         let categories = WordCategory.allCases
         let topics = categories.compactMap { category in
-            return FirebaseTopicModel(id: nil,
-                                      topicName: category,
-                                      words: category.getWordsByTopic())
+            return FirebaseCategoryModel(id: nil,
+                                         category: category,
+                                         words: category.getWordsByTopic())
         }
 
-        return FirebaseTopicsModel(topics: topics)
+        return FirebaseCategoriesModel(categories: topics)
     }
 
-    private func saveModelToFile(_ model: FirebaseTopicsModel) {
-        self.topicsModel = model
+    private func saveModelToFile(_ model: FirebaseCategoriesModel) {
+        let existedCategories = Set(model.categories.compactMap { $0.category })
+        self.selectedCategories = self.selectedCategories.intersection(existedCategories)
+        self.categoriesModel = model
         TopicsFileManagerHelper().saveModelToFile(model: model)
     }
 
-    //    private func setDb() {
-    //        var categories = WordCategory.allCases
-    //        let topics = categories.flatMap { category in
-    //            return FirebaseTopicModel(id: nil,
-    //                                      topicName: category,
-    //                                      words: category.getWordsByTopic())
-    //        }
-    //
-    //        let dbModel = FirebaseTopicsModel(topics: topics)
-    //
-    //        let docRef = firestoreDB.collection("topics").document("topics")
-    //        try? docRef.setData(from: dbModel)
-    //    }
+    /// In case u need update db from scratch
+//    private func setDb() {
+//        var categories = WordCategory.allCases
+//        let topics = categories.flatMap { category in
+//            return FirebaseCategoryModel(id: nil,
+//                                         category: category,
+//                                         words: category.getWordsByTopic())
+//        }
+//
+//        let dbModel = FirebaseCategoriesModel(categories: topics)
+//
+//        let docRef = firestoreDB.collection("topics").document("topics")
+//        try? docRef.setData(from: dbModel)
+//    }
 }

@@ -20,9 +20,9 @@ struct MenuFormView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             MultiSelector(label: Text("Тема:"),
-                          options: WordCategory.allCases,
+                          options: gameModel.availableCategories,
                           optionToString: { $0.getTopicTitle() },
-                          selected: $gameModel.topics)
+                          selected: $gameModel.selectedCategories)
             Stepper("Игроков: \(gameModel.numberOfPlayers)",
                     value: $gameModel.numberOfPlayers, in: 3...10)
                 .colorInvert()

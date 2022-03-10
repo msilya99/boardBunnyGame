@@ -18,7 +18,7 @@ struct MenuView: View {
     var body: some View {
         NavigationView {
             Group {
-                if gameModel.topicsModel == nil {
+                if gameModel.categoriesModel == nil {
                     ActivityIndicatorView()
                 } else {
                     MainMenuView()

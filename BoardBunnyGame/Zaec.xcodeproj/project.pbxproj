@@ -39,7 +39,7 @@
 		B28BD13127CEC679005937D9 /* ListOfWordsByCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28BD13027CEC679005937D9 /* ListOfWordsByCategories.swift */; };
 		B298B59827CF9BB0005777D8 /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B298B59727CF9BB0005777D8 /* DateView.swift */; };
 		B2E964E527D953B600E95281 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2E964E427D953B600E95281 /* GoogleService-Info.plist */; };
-		B2E964EE27D956B700E95281 /* FirebaseTopicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E964ED27D956B700E95281 /* FirebaseTopicsModel.swift */; };
+		B2E964EE27D956B700E95281 /* FirebaseCategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E964ED27D956B700E95281 /* FirebaseCategoriesModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,7 +74,7 @@
 		B28BD13027CEC679005937D9 /* ListOfWordsByCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfWordsByCategories.swift; sourceTree = "<group>"; };
 		B298B59727CF9BB0005777D8 /* DateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
 		B2E964E427D953B600E95281 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		B2E964ED27D956B700E95281 /* FirebaseTopicsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTopicsModel.swift; sourceTree = "<group>"; };
+		B2E964ED27D956B700E95281 /* FirebaseCategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCategoriesModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,7 +218,7 @@
 				B28BD13027CEC679005937D9 /* ListOfWordsByCategories.swift */,
 				B205062427D1588A00E63118 /* DefaultsKeys.swift */,
 				B205062A27D166CD00E63118 /* PlayerModel.swift */,
-				B2E964ED27D956B700E95281 /* FirebaseTopicsModel.swift */,
+				B2E964ED27D956B700E95281 /* FirebaseCategoriesModel.swift */,
 				B28B69AC27DA0DED007CC9C3 /* FirebaseShouldBeupdatedModel.swift */,
 			);
 			path = Model;
@@ -322,7 +322,7 @@
 				B260A39427C591CD0065CE08 /* MenuView.swift in Sources */,
 				B262F39D27CFD3DF00854F34 /* NavigationBarBackButtonModifier.swift in Sources */,
 				B28455F227C83DCE00C7B90D /* FlashCardView.swift in Sources */,
-				B2E964EE27D956B700E95281 /* FirebaseTopicsModel.swift in Sources */,
+				B2E964EE27D956B700E95281 /* FirebaseCategoriesModel.swift in Sources */,
 				B260A38627C587420065CE08 /* BoardBunnyGameApp.swift in Sources */,
 				B28B69AF27DA1E02007CC9C3 /* MainMenuView.swift in Sources */,
 				B205062B27D166CD00E63118 /* PlayerModel.swift in Sources */,

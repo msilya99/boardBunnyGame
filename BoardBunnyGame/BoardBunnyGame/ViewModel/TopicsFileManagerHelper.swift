@@ -19,15 +19,15 @@ class TopicsFileManagerHelper {
 
     // MARK: - actions
 
-    func saveModelToFile(model: FirebaseTopicsModel) {
+    func saveModelToFile(model: FirebaseCategoriesModel) {
         guard let encodedData = try? JSONEncoder().encode(model) else { return }
         DispatchQueue.global(qos: .background).async(execute: {
             try? encodedData.write(to: self.localPath)
         })
     }
 
-    func getModelFromFile() -> FirebaseTopicsModel? {
+    func getModelFromFile() -> FirebaseCategoriesModel? {
         guard let data = FileManager.default.contents(atPath: self.localPath.path) else { return nil }
-        return try? JSONDecoder().decode(FirebaseTopicsModel.self, from: data)
+        return try? JSONDecoder().decode(FirebaseCategoriesModel.self, from: data)
     }
 }
