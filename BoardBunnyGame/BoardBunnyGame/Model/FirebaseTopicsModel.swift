@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
-struct FirebaseTopicModel: Decodable {
+struct FirebaseTopicModel: Codable {
+    @DocumentID var id: String?
     var topicName: String
     var words: [String]
 }
 
-struct FirebaseTopicsModel: Decodable {
+struct FirebaseTopicsModel: Codable {
     var topics: [FirebaseTopicModel]
 }

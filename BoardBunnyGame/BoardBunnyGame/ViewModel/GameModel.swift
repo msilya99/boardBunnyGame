@@ -9,6 +9,7 @@ import Combine
 import SwiftUI
 import Foundation
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class GameModel: ObservableObject {
 
@@ -164,11 +165,11 @@ class GameModel: ObservableObject {
                 return
             }
 
-            let models = documents.compactMap { (queryDocumentSnapshot) -> FirebaseTopicModel? in
-                let data = queryDocumentSnapshot.data()
-                let topics = data["topics"]
-                return nil
+            let models = documents.flatMap { (queryDocumentSnapshot) -> [FirebaseTopicModel] in
+                return (try? queryDocumentSnapshot.data(as: FirebaseTopicsModel.self).topics) ?? []
             }
+
+            print(models)
         }
     }
 
