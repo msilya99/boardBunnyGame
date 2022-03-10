@@ -32,7 +32,7 @@ struct MenuFormView: View {
                     gameModel.isUsingCustomNames = isOn
                 }
                 .foregroundColor(themeColorType: .baseInverted)
-                .tint(Color.init(#colorLiteral(red: 0.8901987672, green: 0.7450953126, blue: 0.8039216399, alpha: 1)))
+                .tint(BaseColors.sh.getColorByType(.bunnyPink))
             if gameModel.isUsingCustomNames {
                 NavigationLink("Изменить имена \(Image(systemName: "pencil"))",
                                destination: ChangeNamesView(gameModel: gameModel))

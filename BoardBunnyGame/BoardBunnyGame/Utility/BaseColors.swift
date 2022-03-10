@@ -12,6 +12,7 @@ enum BaseColorType {
     case baseLight
     case base02Dark
     case base02Light
+    case bunnyPink
 }
 
 class BaseColors {
@@ -27,6 +28,8 @@ class BaseColors {
 
     func getColorByType(_ type: BaseColorType) -> Color {
         switch type {
+        case .bunnyPink:
+            return Color.init(#colorLiteral(red: 0.8901987672, green: 0.7450953126, blue: 0.8039216399, alpha: 1))
         case .baseDark:
             return baseDark
         case .baseLight:

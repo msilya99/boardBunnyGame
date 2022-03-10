@@ -17,7 +17,6 @@ class GameModel: ObservableObject {
 
     private let firestoreDB = Firestore.firestore()
     private let userDefaults: UserDefaults = .standard
-    private var topicsModel: FirebaseTopicsModel?
 
     @AppStorage("numberOfPlayers") var numberOfPlayers: Int = 4 {
         didSet {
@@ -30,6 +29,8 @@ class GameModel: ObservableObject {
             updatePlayerNames()
         }
     }
+
+    @Published var topicsModel: FirebaseTopicsModel?
 
     @Published var isTwoBunnyInATeam: Bool = false
 
@@ -162,11 +163,11 @@ class GameModel: ObservableObject {
     private func fetchFirebaseData() {
         let docRef = firestoreDB.collection("shouldBeUpdated").document("shouldBeUpdated")
         docRef.getDocument { [weak self] document, error in
-            guard let self = self, error == nil, let document = document else { return }
-            if (try? document.data(as: FirebaseShouldBeUpdatedModel.self))?.shouldBeUpdated == true {
-                self.fetchFirebaseTopicsModel()
+            if error == nil, let document = document,
+               (try? document.data(as: FirebaseShouldBeUpdatedModel.self))?.shouldBeUpdated == true {
+                self?.fetchFirebaseTopicsModel()
             } else {
-                self.getModelFromFile()
+                self?.getModelFromFile()
             }
         }
     }
@@ -190,7 +191,7 @@ class GameModel: ObservableObject {
 
     private func getModelFromFile() {
         if let model = TopicsFileManagerHelper().getModelFromFile() {
-            print(model)
+            self.topicsModel = model
         } else {
             self.saveModelToFile(self.getTopicsModel())
         }
