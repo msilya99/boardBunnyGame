@@ -32,6 +32,8 @@
 		B28455F227C83DCE00C7B90D /* FlashCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28455F127C83DCE00C7B90D /* FlashCardView.swift */; };
 		B28B69A727D9F5C3007CC9C3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B28B69A627D9F5C3007CC9C3 /* FirebaseFirestore */; };
 		B28B69A927D9F5C3007CC9C3 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = B28B69A827D9F5C3007CC9C3 /* FirebaseFirestoreSwift-Beta */; };
+		B28B69AB27DA0411007CC9C3 /* TopicsFileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28B69AA27DA0411007CC9C3 /* TopicsFileManagerHelper.swift */; };
+		B28B69AD27DA0DED007CC9C3 /* FirebaseShouldBeupdatedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28B69AC27DA0DED007CC9C3 /* FirebaseShouldBeupdatedModel.swift */; };
 		B28BD13127CEC679005937D9 /* ListOfWordsByCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28BD13027CEC679005937D9 /* ListOfWordsByCategories.swift */; };
 		B298B59827CF9BB0005777D8 /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B298B59727CF9BB0005777D8 /* DateView.swift */; };
 		B2E964E527D953B600E95281 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2E964E427D953B600E95281 /* GoogleService-Info.plist */; };
@@ -63,6 +65,8 @@
 		B27750B527C6D2D0007BFCA3 /* CardContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContentView.swift; sourceTree = "<group>"; };
 		B27750B727C6D8F5007BFCA3 /* TopPurpleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPurpleView.swift; sourceTree = "<group>"; };
 		B28455F127C83DCE00C7B90D /* FlashCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardView.swift; sourceTree = "<group>"; };
+		B28B69AA27DA0411007CC9C3 /* TopicsFileManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsFileManagerHelper.swift; sourceTree = "<group>"; };
+		B28B69AC27DA0DED007CC9C3 /* FirebaseShouldBeupdatedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseShouldBeupdatedModel.swift; sourceTree = "<group>"; };
 		B28BD13027CEC679005937D9 /* ListOfWordsByCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfWordsByCategories.swift; sourceTree = "<group>"; };
 		B298B59727CF9BB0005777D8 /* DateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
 		B2E964E427D953B600E95281 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				B260A3A927C59A080065CE08 /* GameModel.swift */,
+				B28B69AA27DA0411007CC9C3 /* TopicsFileManagerHelper.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 				B205062427D1588A00E63118 /* DefaultsKeys.swift */,
 				B205062A27D166CD00E63118 /* PlayerModel.swift */,
 				B2E964ED27D956B700E95281 /* FirebaseTopicsModel.swift */,
+				B28B69AC27DA0DED007CC9C3 /* FirebaseShouldBeupdatedModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -295,10 +301,12 @@
 				B298B59827CF9BB0005777D8 /* DateView.swift in Sources */,
 				B27750B827C6D8F5007BFCA3 /* TopPurpleView.swift in Sources */,
 				B260A39827C594970065CE08 /* PrimaryButton.swift in Sources */,
+				B28B69AB27DA0411007CC9C3 /* TopicsFileManagerHelper.swift in Sources */,
 				B260A3A627C5987F0065CE08 /* ViewThemeColorModifier.swift in Sources */,
 				B205062727D1604600E63118 /* ChangeNamesView.swift in Sources */,
 				B260A3AA27C59A080065CE08 /* GameModel.swift in Sources */,
 				B262F39B27CFC16100854F34 /* Array + Ex.swift in Sources */,
+				B28B69AD27DA0DED007CC9C3 /* FirebaseShouldBeupdatedModel.swift in Sources */,
 				B272010A27CD79D20042EC6E /* View + Ex.swift in Sources */,
 				B260A39B27C594DC0065CE08 /* MenuFormView.swift in Sources */,
 				B205062127D1103100E63118 /* UserDefaults + Ex.swift in Sources */,

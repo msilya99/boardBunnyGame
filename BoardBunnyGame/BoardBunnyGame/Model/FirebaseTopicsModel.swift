@@ -9,9 +9,20 @@ import Foundation
 import FirebaseFirestoreSwift
 
 struct FirebaseTopicModel: Codable {
-    @DocumentID var id: String?
-    var topicName: String
+    enum CodingKeys: CodingKey {
+        case topicName, words
+    }
+
+    @DocumentID var id: String? = nil
+    var topicName: WordCategory
     var words: [String]
+
+    func encode(to encoder: Encoder) throws {
+        var map = encoder.container(keyedBy: CodingKeys.self)
+
+        try map.encode(self.topicName, forKey: .topicName)
+        try map.encode(self.words, forKey: .words)
+    }
 }
 
 struct FirebaseTopicsModel: Codable {
