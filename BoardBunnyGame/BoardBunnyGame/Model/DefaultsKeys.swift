@@ -15,4 +15,8 @@ extension UserDefaults.Key {
     static var playerNames: UserDefaults.Key<[PlayerModel]> {
         return .init(name: "playerNames")
     }
+
+    static var lastUpdateDate: UserDefaults.Key<Date> {
+        return .init(name: "lastUpdateDate")
+    }
 }

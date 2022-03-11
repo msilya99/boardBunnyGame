@@ -74,7 +74,7 @@ class GameModel: ObservableObject {
     init() {
         self.updatePlayerNames()
         self.fetchFirebaseData()
-        //                self.setDb()
+//                                self.setDb()
     }
 
     // MARK: - actions
@@ -176,7 +176,9 @@ class GameModel: ObservableObject {
         let docRef = firestoreDB.collection("shouldBeUpdated").document("shouldBeUpdated")
         docRef.getDocument { [weak self] document, error in
             if error == nil, let document = document,
-               (try? document.data(as: FirebaseShouldBeUpdatedModel.self))?.shouldBeUpdated == true {
+               let shouldBeUpdatedModel = try? document.data(as: FirebaseShouldBeUpdatedModel.self).lastUpdateDate,
+            shouldBeUpdatedModel != self?.userDefaults[.lastUpdateDate] {
+                self?.userDefaults[.lastUpdateDate] = shouldBeUpdatedModel
                 self?.fetchFirebaseCategoriesModel()
             } else {
                 self?.getModelFromFile()
@@ -245,7 +247,7 @@ class GameModel: ObservableObject {
         }
     }
 
-    /// In case u need update db from scratch
+    /// In case u need update db from
     private func setDb() {
         let dbModel = self.getCategoriesModel()
         let docRef = firestoreDB.collection("topics").document("topics")
