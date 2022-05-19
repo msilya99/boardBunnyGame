@@ -3,7 +3,6 @@
 //  BoardBunnyGame
 //
 //  Created by Ilya Maslau on 24.02.22.
-//
 
 import SwiftUI
 

@@ -90,11 +90,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6ACFD9A328368C2E00CC6A9D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B260A37927C587420065CE08 = {
 			isa = PBXGroup;
 			children = (
 				B260A38427C587420065CE08 /* BoardBunnyGame */,
 				B260A38327C587420065CE08 /* Products */,
+				6ACFD9A328368C2E00CC6A9D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
